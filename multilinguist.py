@@ -1,4 +1,5 @@
 import requests
+
 import json
 
 class Multilinguist:
@@ -78,3 +79,26 @@ class Multilinguist:
     json_response = json.loads(response.text)
     return json_response['translationText']
 
+
+traveler = Multilinguist()
+
+# print(traveler.travel_to('Germany'))
+
+# print(traveler.language_in('Sweden'))
+
+# print(traveler.say_in_local_language('Can I get a beer please'))
+
+class MathGenius(Multilinguist):
+
+  def report_total(self, nums):
+    total = sum(nums)
+    msg = f'The total is {total}'
+    return self.say_in_local_language(msg)
+
+
+me = MathGenius()
+print(me.report_total([23,45,676,34,5778,4,23,5465])) # The total is 12048
+me.travel_to("India")
+print(me.report_total([6,3,6,68,455,4,467,57,4,534])) # है को कुल 1604
+me.travel_to("Italy")
+print(me.report_total([324,245,6,343647,686545])) # È Il totale 1030767
