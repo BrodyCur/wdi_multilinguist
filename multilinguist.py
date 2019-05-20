@@ -1,6 +1,6 @@
 import requests
-
 import json
+import random
 
 class Multilinguist:
   """This class represents a world traveller who knows 
@@ -95,6 +95,21 @@ class MathGenius(Multilinguist):
     msg = f'The total is {total}'
     return self.say_in_local_language(msg)
 
+class QuoteCollector(Multilinguist):
+
+  def __init__(self):
+    super().__init__()
+    self.quotes = []
+
+  def add_quote(self, quote):
+    self.quotes.append(quote)
+
+  def rand_quote(self):
+    random_quote = random.choice(self.quotes)
+    return self.say_in_local_language(random_quote)
+
+
+
 
 me = MathGenius()
 print(me.report_total([23,45,676,34,5778,4,23,5465])) # The total is 12048
@@ -102,3 +117,17 @@ me.travel_to("India")
 print(me.report_total([6,3,6,68,455,4,467,57,4,534])) # है को कुल 1604
 me.travel_to("Italy")
 print(me.report_total([324,245,6,343647,686545])) # È Il totale 1030767
+
+
+qc = QuoteCollector()
+
+qc.add_quote("Don't cry because it's over, smile because it happened.")
+qc.add_quote("Be yourself; everyone else is already taken.")
+qc.add_quote("Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.")
+qc.add_quote("You only live once, but if you do it right, once is enough.")
+
+print(qc.rand_quote())
+qc.travel_to("India")
+print(qc.rand_quote())
+qc.travel_to("Italy")
+print(qc.rand_quote())
